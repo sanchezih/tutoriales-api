@@ -24,6 +24,8 @@ public class Tutorial {
 	@Column(name = "published")
 	private boolean published;
 
+	/*----------------------------------------------------------------------------*/
+
 	public Tutorial() {
 
 	}
@@ -33,6 +35,8 @@ public class Tutorial {
 		this.description = description;
 		this.published = published;
 	}
+
+	/*----------------------------------------------------------------------------*/
 
 	public long getId() {
 		return id;

@@ -23,16 +23,23 @@ import com.github.sanchezih.tutorials.repository.TutorialRepository;
 
 @CrossOrigin(origins = "http://localhost:8081")
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/v1/tutorials")
 public class TutorialController {
 
 	@Autowired
 	TutorialRepository tutorialRepository;
 
-	@GetMapping("/tutorials")
-	public ResponseEntity<List<Tutorial>> getAllTutorials(@RequestParam(required = false) String title) {
+	/*----------------------------------------------------------------------------*/
+
+	/**
+	 * 
+	 * @param title
+	 * @return
+	 */
+	@GetMapping
+	public ResponseEntity<?> getAll(@RequestParam(required = false) String title) {
 		try {
-			List<Tutorial> tutorials = new ArrayList<Tutorial>();
+			List<Tutorial> tutorials = new ArrayList<>();
 
 			if (title == null)
 				tutorialRepository.findAll().forEach(tutorials::add);
@@ -49,8 +56,13 @@ public class TutorialController {
 		}
 	}
 
-	@GetMapping("/tutorials/{id}")
-	public ResponseEntity<Tutorial> getTutorialById(@PathVariable("id") long id) {
+	/**
+	 * 
+	 * @param id
+	 * @return
+	 */
+	@GetMapping("/{id}")
+	public ResponseEntity<?> getOne(@PathVariable("id") long id) {
 		Optional<Tutorial> tutorialData = tutorialRepository.findById(id);
 
 		if (tutorialData.isPresent()) {
@@ -60,8 +72,13 @@ public class TutorialController {
 		}
 	}
 
-	@PostMapping("/tutorials")
-	public ResponseEntity<Tutorial> createTutorial(@RequestBody Tutorial tutorial) {
+	/**
+	 * 
+	 * @param tutorial
+	 * @return
+	 */
+	@PostMapping
+	public ResponseEntity<?> create(@RequestBody Tutorial tutorial) {
 		try {
 			Tutorial _tutorial = tutorialRepository
 					.save(new Tutorial(tutorial.getTitle(), tutorial.getDescription(), false));
@@ -71,8 +88,14 @@ public class TutorialController {
 		}
 	}
 
-	@PutMapping("/tutorials/{id}")
-	public ResponseEntity<Tutorial> updateTutorial(@PathVariable("id") long id, @RequestBody Tutorial tutorial) {
+	/**
+	 * 
+	 * @param id
+	 * @param tutorial
+	 * @return
+	 */
+	@PutMapping("/{id}")
+	public ResponseEntity<Tutorial> update(@PathVariable("id") long id, @RequestBody Tutorial tutorial) {
 		Optional<Tutorial> tutorialData = tutorialRepository.findById(id);
 
 		if (tutorialData.isPresent()) {
@@ -86,8 +109,13 @@ public class TutorialController {
 		}
 	}
 
-	@DeleteMapping("/tutorials/{id}")
-	public ResponseEntity<HttpStatus> deleteTutorial(@PathVariable("id") long id) {
+	/**
+	 * 
+	 * @param id
+	 * @return
+	 */
+	@DeleteMapping("/{id}")
+	public ResponseEntity<?> delete(@PathVariable("id") long id) {
 		try {
 			tutorialRepository.deleteById(id);
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -96,8 +124,12 @@ public class TutorialController {
 		}
 	}
 
-	@DeleteMapping("/tutorials")
-	public ResponseEntity<HttpStatus> deleteAllTutorials() {
+	/**
+	 * 
+	 * @return
+	 */
+	@DeleteMapping
+	public ResponseEntity<?> deleteAll() {
 		try {
 			tutorialRepository.deleteAll();
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -107,8 +139,12 @@ public class TutorialController {
 
 	}
 
-	@GetMapping("/tutorials/published")
-	public ResponseEntity<List<Tutorial>> findByPublished() {
+	/**
+	 * 
+	 * @return
+	 */
+	@GetMapping("/published")
+	public ResponseEntity<?> findByPublished() {
 		try {
 			List<Tutorial> tutorials = tutorialRepository.findByPublished(true);
 
