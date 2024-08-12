@@ -63,6 +63,7 @@ public class TutorialController {
 	 */
 	@GetMapping("/{id}")
 	public ResponseEntity<?> getOne(@PathVariable("id") long id) {
+
 		Optional<Tutorial> tutorialData = tutorialRepository.findById(id);
 
 		if (tutorialData.isPresent()) {
@@ -96,6 +97,7 @@ public class TutorialController {
 	 */
 	@PutMapping("/{id}")
 	public ResponseEntity<Tutorial> update(@PathVariable("id") long id, @RequestBody Tutorial tutorial) {
+
 		Optional<Tutorial> tutorialData = tutorialRepository.findById(id);
 
 		if (tutorialData.isPresent()) {
