@@ -23,7 +23,7 @@ import com.github.sanchezih.tutorials.repository.TutorialRepository;
 
 @CrossOrigin(origins = "http://localhost:8081")
 @RestController
-@RequestMapping("/v1/tutorials")
+@RequestMapping("/api/v1/tutorials")
 public class TutorialController {
 
 	@Autowired
