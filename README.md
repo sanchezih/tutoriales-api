@@ -37,6 +37,9 @@ $ ./mvnw spring-boot:run
 ## Acceso a la consola de la DB H2
 http://localhost:8080/h2-ui
 
+- Usuario: sa
+- Password: En blanco
+
 ## Inicializacion opcional de la DB H2
 ```sql
 delete from tutorials;
