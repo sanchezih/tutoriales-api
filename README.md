@@ -38,7 +38,7 @@ $ ./mvnw spring-boot:run
 http://localhost:8080/h2-ui
 
 - Usuario: sa
-- Password: <En blanco>
+- Password: En blanco
 
 ## Inicializacion opcional de la DB H2
 ```sql
