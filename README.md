@@ -16,7 +16,7 @@ Aplicacion que permite administrar tutoriales.
 - Maven
 - H2
 
-## Instalacion
+## Compilacion y ejecucion
 
 ```bash
 $ ./mvnw spring-boot:run
