@@ -14,9 +14,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * 
  * @SpringBootConfiguration: enable registration of extra beans in the context
  *                           or the import of additional configuration classes.
- *                           An alternative to Spring’s standard @Configuration
- *                           that aids configuration detection in your
- *                           integration tests.
+ * 
  */
 @SpringBootApplication
 public class Application {
