@@ -7,15 +7,23 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-@Entity
-@Table(name = "tutorials")
+/**
+ * Tutorial data model class corresponds to entity and table tutorials.
+ * 
+ */
+@Entity // @Entity annotation indicates that the class is a persistent Java class.
+@Table(name = "tutorial") // @Table annotation provides the table that maps this entity.
 public class Tutorial {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id // @Id annotation is for the primary key.
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // @GeneratedValue annotation is used to define generation
+														// strategy for the primary key. GenerationType. IDENTITY: This
+														// strategy relies on an auto-incremented database column for
+														// primary key generation.
 	private long id;
 
-	@Column(name = "title")
+	@Column(name = "title") // @Column annotation is used to define the column in database that maps
+							// annotated field.
 	private String title;
 
 	@Column(name = "description")
@@ -26,10 +34,19 @@ public class Tutorial {
 
 	/*----------------------------------------------------------------------------*/
 
+	/**
+	 * 
+	 */
 	public Tutorial() {
 
 	}
 
+	/**
+	 * 
+	 * @param title
+	 * @param description
+	 * @param published
+	 */
 	public Tutorial(String title, String description, boolean published) {
 		this.title = title;
 		this.description = description;

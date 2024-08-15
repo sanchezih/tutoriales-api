@@ -21,12 +21,24 @@ import org.springframework.web.bind.annotation.RestController;
 import com.github.sanchezih.tutorials.entity.Tutorial;
 import com.github.sanchezih.tutorials.repository.TutorialRepository;
 
-@CrossOrigin(origins = "http://localhost:8081")
-@RestController
-@RequestMapping("/api/v1/tutorials")
+/**
+ * TutorialController is a RestController which has request mapping methods for
+ * RESTful requests such as: getAllTutorials, createTutorial, updateTutorial,
+ * deleteTutorial, findByPublished...
+ * 
+ */
+@CrossOrigin(origins = "http://localhost:8081") // @CrossOrigin is for configuring allowed origins.
+
+@RestController // @RestController annotation is used to define a controller and to indicate
+				// that the return value of the methods should be be bound to the web response
+				// body.
+
+@RequestMapping("/api/v1/tutorials") // @RequestMapping("/api") declares that all Apis’ url in the controller will
+										// start with /api.
+
 public class TutorialController {
 
-	@Autowired
+	@Autowired // We use @Autowired to inject TutorialRepository bean to local variable.
 	TutorialRepository tutorialRepository;
 
 	/*----------------------------------------------------------------------------*/
