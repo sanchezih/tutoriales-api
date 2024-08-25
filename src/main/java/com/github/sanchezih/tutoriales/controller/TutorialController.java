@@ -1,4 +1,4 @@
-package com.github.sanchezih.tutorials.controller;
+package com.github.sanchezih.tutoriales.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,8 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.github.sanchezih.tutorials.entity.Tutorial;
-import com.github.sanchezih.tutorials.repository.TutorialRepository;
+import com.github.sanchezih.tutoriales.entity.Tutorial;
+import com.github.sanchezih.tutoriales.repository.TutorialRepository;
 
 /**
  * TutorialController is a RestController which has request mapping methods for

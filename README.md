@@ -1,7 +1,7 @@
 
 # Tutoriales API
-![GitHub last commit](https://img.shields.io/github/last-commit/sanchezih/tutorials-api)
-![GitHub repo size](https://img.shields.io/github/repo-size/sanchezih/tutorials-api)
+![GitHub last commit](https://img.shields.io/github/last-commit/sanchezih/tutoriales-api)
+![GitHub repo size](https://img.shields.io/github/repo-size/sanchezih/tutoriales-api)
 
 Aplicacion que permite administrar tutoriales.
 

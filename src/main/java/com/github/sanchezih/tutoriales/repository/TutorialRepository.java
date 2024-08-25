@@ -1,8 +1,9 @@
-package com.github.sanchezih.tutorials.repository;
+package com.github.sanchezih.tutoriales.repository;
 
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
-import com.github.sanchezih.tutorials.entity.Tutorial;
+
+import com.github.sanchezih.tutoriales.entity.Tutorial;
 
 /**
  * TutorialRepository es una interface que extiende JpaRepository y permite

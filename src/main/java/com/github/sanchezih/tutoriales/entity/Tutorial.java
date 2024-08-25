@@ -1,4 +1,4 @@
-package com.github.sanchezih.tutorials.entity;
+package com.github.sanchezih.tutoriales.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

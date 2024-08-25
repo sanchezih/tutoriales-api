@@ -1,4 +1,4 @@
-package com.github.sanchezih.tutorials;
+package com.github.sanchezih.tutoriales;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

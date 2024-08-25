@@ -12,7 +12,7 @@
 	</parent>
 
 	<groupId>com.github.sanchezih</groupId>
-	<artifactId>tutorials-api</artifactId>
+	<artifactId>tutoriales-api</artifactId>
 	<version>1.0.0</version>
 	<name>tutorials-api</name>
 	<description>Demo project for Spring Boot</description>
