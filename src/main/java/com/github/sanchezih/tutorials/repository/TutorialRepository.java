@@ -5,20 +5,21 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.github.sanchezih.tutorials.entity.Tutorial;
 
 /**
- * TutorialRepository is an interface that extends JpaRepository for CRUD
- * methods and custom finder methods.
+ * TutorialRepository es una interface que extiende JpaRepository y permite
+ * operaciones CRUD y metodos custom
  * 
- * It will be autowired in TutorialController.
+ * Metodos que se pueden utilizar: save(), findOne(), findById(), findAll(),
+ * count(), delete(), deleteById(), entre otros...
+ * 
+ * Se inyectara en TutorialController.
  */
 public interface TutorialRepository extends JpaRepository<Tutorial, Long> {
 
-	// Now we can use JpaRepository’s methods: save(), findOne(), findById(),
-	// findAll(), count(), delete(), deleteById()… without implementing these
-	// methods. We also define custom finder methods:
+	// Metodos custom
 
-	// Returns all Tutorials with published having value as input published.
-	List<Tutorial> findByPublished(boolean published);
+	// Retorna todos los publicados. Se debe respetar el nombre del atributo.
+	List<Tutorial> findByPublicado(boolean publicado);
 
-	// Returns all Tutorials which title contains input title.
-	List<Tutorial> findByTitleContaining(String title);
+	// Retorna todos los que contienen en su titulo lo recibido por parametro.
+	List<Tutorial> findByTituloContaining(String titulo);
 }

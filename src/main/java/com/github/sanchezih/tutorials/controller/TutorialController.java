@@ -33,36 +33,41 @@ import com.github.sanchezih.tutorials.repository.TutorialRepository;
 				// that the return value of the methods should be be bound to the web response
 				// body.
 
-@RequestMapping("/api/v1/tutorials") // @RequestMapping("/api") declares that all Apis’ url in the controller will
-										// start with /api.
+@RequestMapping("/api/v1/tutoriales") // @RequestMapping("/api/v1/tutorials") declares that all Apis’ url in the
+										// controller will start with /api/v1/tutorials.
 
 public class TutorialController {
 
-	@Autowired // We use @Autowired to inject TutorialRepository bean to local variable.
+	@Autowired // Se usa @Autowired para inyectar el bean TutorialRepository a la variable
+				// local.
 	TutorialRepository tutorialRepository;
 
 	/*----------------------------------------------------------------------------*/
 
 	/**
 	 * 
-	 * @param title
+	 * @param titulo
 	 * @return
 	 */
 	@GetMapping
-	public ResponseEntity<?> getAll(@RequestParam(required = false) String title) {
+	public ResponseEntity<?> getAll(@RequestParam(required = false) String titulo) {
 		try {
-			List<Tutorial> tutorials = new ArrayList<>();
+			List<Tutorial> tutoriales = new ArrayList<>();
 
-			if (title == null)
-				tutorialRepository.findAll().forEach(tutorials::add);
-			else
-				tutorialRepository.findByTitleContaining(title).forEach(tutorials::add);
+			if (titulo == null) {
+				tutoriales = tutorialRepository.findAll();
+			} else {
+				tutoriales = tutorialRepository.findByTituloContaining(titulo);
+			}
 
-			if (tutorials.isEmpty()) {
+			// Si no hay tutoriales para mostrar, se devuelve un codigo 204
+			if (tutoriales.isEmpty()) {
 				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 			}
 
-			return new ResponseEntity<>(tutorials, HttpStatus.OK);
+			// Si hay tutoriales para mostrar, se devuelve un codigo 200
+			return new ResponseEntity<>(tutoriales, HttpStatus.OK);
+
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
@@ -70,16 +75,18 @@ public class TutorialController {
 
 	/**
 	 * 
-	 * @param id
+	 * @param _id
 	 * @return
 	 */
 	@GetMapping("/{id}")
-	public ResponseEntity<?> getOne(@PathVariable("id") long id) {
+	public ResponseEntity<?> getOne(@PathVariable("id") Long id) {
 
-		Optional<Tutorial> tutorialData = tutorialRepository.findById(id);
+		Optional<Tutorial> tutorialOptional = tutorialRepository.findById(id);
 
-		if (tutorialData.isPresent()) {
-			return new ResponseEntity<>(tutorialData.get(), HttpStatus.OK);
+		// Si el tutorial existe, se devuelve un codigo 200, en caso contrario, se
+		// devuelve 404
+		if (tutorialOptional.isPresent()) {
+			return new ResponseEntity<>(tutorialOptional.get(), HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
@@ -93,9 +100,10 @@ public class TutorialController {
 	@PostMapping
 	public ResponseEntity<?> create(@RequestBody Tutorial tutorial) {
 		try {
-			Tutorial _tutorial = tutorialRepository
-					.save(new Tutorial(tutorial.getTitle(), tutorial.getDescription(), false));
-			return new ResponseEntity<>(_tutorial, HttpStatus.CREATED);
+			Tutorial tutorialCreado = tutorialRepository
+					.save(new Tutorial(tutorial.getTitulo(), tutorial.getDescripcion(), false));
+
+			return new ResponseEntity<>(tutorialCreado, HttpStatus.CREATED);
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
@@ -108,16 +116,20 @@ public class TutorialController {
 	 * @return
 	 */
 	@PutMapping("/{id}")
-	public ResponseEntity<Tutorial> update(@PathVariable("id") long id, @RequestBody Tutorial tutorial) {
+	public ResponseEntity<Tutorial> update(@PathVariable("id") Long id, @RequestBody Tutorial tutorial) {
 
-		Optional<Tutorial> tutorialData = tutorialRepository.findById(id);
+		Optional<Tutorial> tutorialOptional = tutorialRepository.findById(id);
 
-		if (tutorialData.isPresent()) {
-			Tutorial _tutorial = tutorialData.get();
-			_tutorial.setTitle(tutorial.getTitle());
-			_tutorial.setDescription(tutorial.getDescription());
-			_tutorial.setPublished(tutorial.isPublished());
-			return new ResponseEntity<>(tutorialRepository.save(_tutorial), HttpStatus.OK);
+		// Si el tutorial existe, se actualiza todo el recurso
+		if (tutorialOptional.isPresent()) {
+
+			Tutorial updatedTutorial = tutorialOptional.get();
+
+			updatedTutorial.setTitulo(tutorial.getTitulo());
+			updatedTutorial.setDescripcion(tutorial.getDescripcion());
+			updatedTutorial.setPublicado(tutorial.isPublicado());
+
+			return new ResponseEntity<>(tutorialRepository.save(updatedTutorial), HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
@@ -129,7 +141,7 @@ public class TutorialController {
 	 * @return
 	 */
 	@DeleteMapping("/{id}")
-	public ResponseEntity<?> delete(@PathVariable("id") long id) {
+	public ResponseEntity<?> delete(@PathVariable("id") Long id) {
 		try {
 			tutorialRepository.deleteById(id);
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -157,15 +169,15 @@ public class TutorialController {
 	 * 
 	 * @return
 	 */
-	@GetMapping("/published")
-	public ResponseEntity<?> findByPublished() {
+	@GetMapping("/publicados")
+	public ResponseEntity<?> findByPublicado() {
 		try {
-			List<Tutorial> tutorials = tutorialRepository.findByPublished(true);
+			List<Tutorial> tutoriales = tutorialRepository.findByPublicado(true);
 
-			if (tutorials.isEmpty()) {
+			if (tutoriales.isEmpty()) {
 				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 			}
-			return new ResponseEntity<>(tutorials, HttpStatus.OK);
+			return new ResponseEntity<>(tutoriales, HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}

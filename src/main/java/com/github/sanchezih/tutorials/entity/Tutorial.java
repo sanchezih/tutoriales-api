@@ -7,85 +7,70 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-/**
- * Tutorial data model class corresponds to entity and table tutorials.
- * 
- */
-@Entity // @Entity annotation indicates that the class is a persistent Java class.
-@Table(name = "tutorial") // @Table annotation provides the table that maps this entity.
+@Entity // Indica que la clase es una clase Java persistente.
+@Table(name = "tutorial") // Nombre de la tabla en la DB.
 public class Tutorial {
 
-	@Id // @Id annotation is for the primary key.
+	@Id // Clave primaria
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // @GeneratedValue annotation is used to define generation
 														// strategy for the primary key. GenerationType. IDENTITY: This
 														// strategy relies on an auto-incremented database column for
 														// primary key generation.
-	private long id;
+	private Long id;
 
-	@Column(name = "title") // @Column annotation is used to define the column in database that maps
-							// annotated field.
-	private String title;
+	@Column(name = "title") // Este nombre tendra el atributo en la DB.
+	private String titulo;
 
 	@Column(name = "description")
-	private String description;
+	private String descripcion;
 
 	@Column(name = "published")
-	private boolean published;
+	private boolean publicado;
 
 	/*----------------------------------------------------------------------------*/
 
-	/**
-	 * 
-	 */
 	public Tutorial() {
 
 	}
 
-	/**
-	 * 
-	 * @param title
-	 * @param description
-	 * @param published
-	 */
-	public Tutorial(String title, String description, boolean published) {
-		this.title = title;
-		this.description = description;
-		this.published = published;
+	public Tutorial(String titulo, String descripcion, boolean publicado) {
+		this.titulo = titulo;
+		this.descripcion = descripcion;
+		this.publicado = publicado;
 	}
 
 	/*----------------------------------------------------------------------------*/
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public String getTitle() {
-		return title;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public String getTitulo() {
+		return titulo;
 	}
 
-	public String getDescription() {
-		return description;
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public String getDescripcion() {
+		return descripcion;
 	}
 
-	public boolean isPublished() {
-		return published;
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 
-	public void setPublished(boolean isPublished) {
-		this.published = isPublished;
+	public boolean isPublicado() {
+		return publicado;
 	}
 
-	@Override
-	public String toString() {
-		return "Tutorial [id=" + id + ", title=" + title + ", desc=" + description + ", published=" + published + "]";
+	public void setPublicado(boolean publicado) {
+		this.publicado = publicado;
 	}
 
 }
