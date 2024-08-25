@@ -25,14 +25,14 @@ $ ./mvnw spring-boot:run
 ## Servicios
 |Verbo	|Endpoint	|Funcionalidad
 |---|---|---
-|POST		|/api/v1/tutorials					|Crea un tutorial
-|GET		|/api/v1/tutorials					|Retorna todos los tutoriales
-|GET		|/api/v1/tutorials/:id				|Retorna un tutorial en base a su :id
-|PUT		|/api/v1/tutorials/:id				|Actualiza un tutorial en base a su :id
-|DELETE		|/api/v1/tutorials/:id				|Elimina un tutorial en base a su :id
-|DELETE		|/api/v1/tutorials					|Elimina todos los tutoriales
-|GET		|/api/v1/tutorials/published		|Retorna todos los tutoriales publicados
-|GET		|/api/v1/tutorials?title=[keyword]	|Retorna todos los tutoriales que contengan en su titulo la keyword
+|POST		|/api/v1/tutoriales					|Crea un tutorial
+|GET		|/api/v1/tutoriales					|Retorna todos los tutoriales
+|GET		|/api/v1/tutoriales/:id				|Retorna un tutorial en base a su id
+|PUT		|/api/v1/tutoriales/:id				|Actualiza un tutorial en base a su id
+|DELETE		|/api/v1/tutoriales/:id				|Elimina un tutorial en base a su id
+|DELETE		|/api/v1/tutoriales					|Elimina todos los tutoriales
+|GET		|/api/v1/tutoriales/published		|Retorna todos los tutoriales publicados
+|GET		|/api/v1/tutoriales?titulo=[keyword]	|Retorna todos los tutoriales que contengan en su titulo la keyword
 
 ## Acceso a la consola de la DB H2
 http://localhost:8080/h2-ui
