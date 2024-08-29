@@ -14,7 +14,7 @@
 	<groupId>com.github.sanchezih</groupId>
 	<artifactId>tutoriales-api</artifactId>
 	<version>1.0.0</version>
-	<name>tutorials-api</name>
+	<name>tutoriales-api</name>
 	<description>Demo project for Spring Boot</description>
 
 	<url />
