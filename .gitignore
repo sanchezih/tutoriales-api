@@ -22,7 +22,7 @@
 log/
 #target/
 
-target/
+
 pom.xml.tag
 pom.xml.releaseBackup
 pom.xml.versionsBackup
@@ -90,8 +90,7 @@ coverage.xml
 # Sphinx documentation
 docs/_build/
 
-# PyBuilder
-target/
+
 
 
 ##########################
