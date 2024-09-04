@@ -1,5 +1,5 @@
-# Usa una imagen base de Maven para construir la aplicación con Java 21
-FROM maven:3.9.0-openjdk-21 AS build
+# Usa una imagen base de Maven con OpenJDK 21 para construir la aplicación
+FROM maven:3.8.6-openjdk-21 AS build
 WORKDIR /app
 
 # Copia el archivo de construcción de Maven y el código fuente
