@@ -9,8 +9,8 @@ COPY src ./src
 # Construye la aplicación
 RUN mvn clean package -DskipTests
 
-# Usa una imagen base de Java 21 para ejecutar la aplicación
-FROM openjdk:21-jdk-alpine
+# Usa una imagen base de Java 21 con Debian para ejecutar la aplicación
+FROM openjdk:21-jdk-slim
 WORKDIR /app
 
 # Copia el archivo JAR desde la etapa de construcción
