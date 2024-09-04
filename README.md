@@ -42,10 +42,10 @@ http://localhost:8080/h2-ui
 
 ## Inicializacion opcional de la DB H2
 ```sql
-delete from tutorials;
-insert into tutorials (title, description, published) values ('Aprende a usar Genially', 'Un microcurso autoasistido para aprender a usar Genially, una plataforma en linea para crear diversos objetos digitales interactivos.', false);
-insert into tutorials (title, description, published) values ('Aprende a usar Moodle', 'Un microcurso autoasistido para aprender a usar Moodle, una plataforma educativa que permite crear ambientes de aprendizaje personalizados.', false);
-insert into tutorials (title, description, published) values ('Aprende a usar YouTube', 'Un microcurso autoasistido para aprender a crear un canal propio en YouTube y usar sus potencialidades con fines pedagogicos.', false);
+delete from tutorial;
+insert into tutorial (title, description, published) values ('Aprende a usar Genially', 'Un microcurso autoasistido para aprender a usar Genially, una plataforma en linea para crear diversos objetos digitales interactivos.', false);
+insert into tutorial (title, description, published) values ('Aprende a usar Moodle', 'Un microcurso autoasistido para aprender a usar Moodle, una plataforma educativa que permite crear ambientes de aprendizaje personalizados.', false);
+insert into tutorial (title, description, published) values ('Aprende a usar YouTube', 'Un microcurso autoasistido para aprender a crear un canal propio en YouTube y usar sus potencialidades con fines pedagogicos.', false);
 ```
 
 
