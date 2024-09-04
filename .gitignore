@@ -20,7 +20,7 @@
 
 # Maven
 log/
-target/
+#target/
 
 target/
 pom.xml.tag
